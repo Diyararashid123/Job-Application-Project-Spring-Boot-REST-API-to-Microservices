@@ -1,5 +1,6 @@
 package com.diyara.firstjobapp.job;
 
+import com.diyara.firstjobapp.company.Company;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,11 +20,10 @@ public class JobController {
         return ResponseEntity.ok(jobService.findAll());
     }
 
-
-
     @PostMapping("/jobs")
     public ResponseEntity<String> createJob( @RequestBody Job job){
         jobService.createJob(job);
+
         return new ResponseEntity<>("Job added successfully",HttpStatus.CREATED);
     }
     @GetMapping("/jobs/{id}")
